@@ -1,19 +1,19 @@
 *{
     margin: 0;
-}
-.page{
+  }
+  .page{
     padding: 50px 20px;
-}
-.title{
+  }
+  .title{
     font-weight: bold;
-    font-style: 20px;
+    font-size: 20px;
     font-family: serif '微软雅黑';
     margin-bottom: 30px;
-}
-.container{
+  }
+  .container{
     width: 1075px;
-}
-.content{
+  }
+  .content{
     width: 335px;
     box-sizing: border-box;
     padding: 20px;
@@ -22,24 +22,25 @@
     /* display: inline-block; */
     float: left;
     margin-right: 20px;
-}
-.content:last-child{
+  }
+  .content:last-child{
     margin-right: 0;
-}
-.content-title{
+  }
+  .content-title{
     font-weight: bold;
-    font-style: 20px;
+    font-size: 20px;
     font-family: serif '微软雅黑';
-}
-.content-desc{
+  }
+  .content-desc{
     margin-top: 20px;
     margin-bottom: 50px;
-}
-.content .img{
+  }
+  .content .img{
     width: 295px;
     height: 295px;
     margin: 0 auto;
-}
-.img img{
+  }
+  .img img{
     width: 100%;
-}
+  }
+  
