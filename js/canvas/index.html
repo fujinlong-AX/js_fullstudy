@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myCanvus{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvus" width="600px" height="400px "></canvas>
+
+
+    <script>
+        var c = document.getElementById('myCanvus')
+        var ctx = c.getContext('2d')
+        var str = "hello world"
+        var grd = ctx.createLinearGradient(0,0,c.width,0)
+        grd.addColorStop("0","orange")
+        grd.addColorStop(0.5,"pink")
+        grd.addColorStop(1,"skyblue")
+        ctx.font = '100px sans-serif'
+        ctx.textAlign = 'center'
+        ctx.textBaseline = "middle"
+        ctx.fillStyle = grd
+        ctx.fillText(str,300,200)
+        
+        
+    </script>
+</body>
+</html>
