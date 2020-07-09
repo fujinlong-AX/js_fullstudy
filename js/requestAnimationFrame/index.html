@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html,body{
+            font-family: sans-serif;
+            background-color: #13091B;
+            height: 100%;
+        }
+        body{
+            background-image: url(https://p1.music.126.net/gAmIGjlWnYXE_0O8LFp5-w==/109951164382001054.jpg);
+            background-size: cover;
+        }
+        audio{
+            visibility: hidden;
+        }
+        #play{
+            width: 150px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            margin: 0 auto;
+            text-decoration: none;
+            left: 50%;
+            top: 50%;
+            transform:translate(-50%,-50%);
+            background-color: aqua;
+            display: block;
+            position: absolute;
+            border-radius: 4px;
+            font-style: 18px;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <audio id="audio" src="http://m8.music.126.net/21180815163607/04976f67866d4b4d11575ab418904467/ymusic/515a/5508/520b/f0cf47930abbbb0562c9ea61707c4c0b.mp3?infoId=92001" controls></audio>
+        <a href="javascript:;" id="play">PLAY</a>
+    </div>
+    <script>
+        var btn = document.getElementById("play")
+        var audio = document.getElementById("audio")
+        btn.onclick = function(){
+            audio.play()
+            btn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
