@@ -6,34 +6,21 @@
     <title>Document</title>
 </head>
 <body>
+    <p>
+    <span>请选择菜单：</span>
+    <select class="select">
+        <option class="opn" value="请选择" selected>请选择</option>
+        <option class="opn" value="水果">水果</option>
+        <option class="opn" value="蛋糕">蛋糕</option>
+        <option class="opn" value="坚果">坚果</option>
+    </select>
+    <div>该系列有：</div><span class="pz"></span>
+    </p>
     <script>
-        function count(){
-            var num=1;
-            return function(){
-                return num++;
-            };
+        var opns = document.querySelectorAll('.opn');
+        for(var i = 0; i < opns.length; i++){
+            
         }
-        // var fn=function (){
-        //     var num=1;
-        //     return function(){
-        //         return num++;
-        //     };
-        // }
-      
-      
- 
-
-
-        var fn=count();
-        console.log(typeof fn)
-        console.log(typeof count()())
-        document.write(count()+"<br>")
-        document.write(count()()+"<br>")
-        document.write(count()()+"<br>")
-        document.write(fn()+"<br>")
-        document.write(fn()+"<br>")
-        document.write(fn()+"<br>")
-        document.write(count()()+"<br>")
     </script>
 </body>
 </html>
