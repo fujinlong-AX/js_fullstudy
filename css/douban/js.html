@@ -8,19 +8,41 @@
 <body>
     <p>
     <span>请选择菜单：</span>
-    <select class="select">
+    <select class="select" onchange="test(this.options[this.options.selectedIndex].text)">
         <option class="opn" value="请选择" selected>请选择</option>
         <option class="opn" value="水果">水果</option>
         <option class="opn" value="蛋糕">蛋糕</option>
         <option class="opn" value="坚果">坚果</option>
     </select>
-    <div>该系列有：</div><span class="pz"></span>
+    <div>该系列有：<span class="pz"></span></div>
     </p>
     <script>
-        var opns = document.querySelectorAll('.opn');
-        for(var i = 0; i < opns.length; i++){
+        var opns = document.querySelector('.select')
+        var  pz = document.querySelector('.pz')
+        // for(var i = 0; i < opns.length; i++){
+        //     var value = opns[i].textContent
             
-        }
+        // }
+
+        function test(e) {
+                switch(e){
+                case '请选择': 
+                pz.innerHTML = '请选择'
+                break
+                case '水果': 
+                pz.innerHTML = '很多水果'
+                break
+                case '蛋糕': 
+                pz.innerHTML = '很多蛋糕'
+                break
+                case '坚果': 
+                pz.innerHTML = "很多坚果"
+                break
+            }
+            }
+
+
+        
     </script>
 </body>
 </html>
