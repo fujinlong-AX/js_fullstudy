@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function pTest() {
+    this.say = function () {
+        alert("11")
+    }
+}
+pTest.prototype.play = function() {
+    alert("22")
+}
+pTest.prototype.name = "haha"
+function cTest() {
+    this.eat = function() {
+        alert("33")
+    }
+}
+//  cTest.prototype.name = "lala"
+ cTest.prototype = new pTest()
+ cTest.prototype.name = "lala"
+ var people = new cTest()
+ people.say()
+people.play()
+people.eat()
+ alert(people.name)
+    </script>
+</body>
+</html>
