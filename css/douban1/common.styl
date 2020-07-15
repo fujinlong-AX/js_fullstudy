@@ -1,0 +1,161 @@
+div,p,span,a
+    margin 0
+    padding 0
+body .page, body #app, body .msite-max-width, body .msite-fixed-max-width
+    margin 650px
+a
+    text-decoration none
+button, input
+    overflow visible
+.page
+    padding-top 0
+    background #ffffff
+    margin 0 auto
+    overflow-x hidden
+body
+    color #191919
+    font-size 12px
+    font-family "Helvetica Neue",Helvetica,Arial,sans-serif
+h1 
+    margin 30px 0 5px
+    line-height 32px
+    word-break break-all
+h2
+    font-size 15px
+    line-height 21px
+    color #191919
+    margin 0px
+.TalionNav
+    width 100%
+    position relative
+    z-index 9999
+    background #ffffff
+    .TalionNav-primary
+        display flex
+        justify-content flex-start
+        align-items center
+        box-sizing border-box
+        height 50px
+        position fixed
+        top 0
+        left 0
+        width 100%
+        z-index 100
+        padding 0 15px
+        background-color #fff
+        box-shadow 0 1px 4px rgba(0,0,0,0.05)
+        .search-box
+            width 100px
+            flex 100px 0 0
+            height 30px
+            border-radius 15px
+            border 1px solid #dfdfdf
+            color rgba(0,0,0,0.25)
+            background-color #f7f7f7 
+            font-size 15px
+            line-height 21px
+            padding-left 8px
+            display flex
+            justify-content flex-start
+            align-items center
+            box-sizing border-box 
+            
+                .search-input
+                    box-sizing border-box
+                    border 0
+                    padding 20px
+                    background url(./image/4.jpg) no-repeat 0
+                    background 17.33333px
+                    border-radius 3px
+                    width 100%
+                    height 31px
+                    font-size 14px
+        .nav-btns
+            flex 1
+            font-size 15px
+            line-height 21px
+            color #3ba94d
+            text-align right
+            display flex
+            justify-content flex-end
+            align-items center
+                .nav-btn-item
+                    padding 0 15px
+                    .nav-btn-item::last-child
+                        padding-right 0
+                        border-right 0
+                    .nav-btn-item::first-child
+                        padding-left 0
+            .to_pc
+                display inline-block
+                width 20px
+                height 19px
+                background url(./image/7.png) 100% no-repeat
+                background-size contain
+    .logo
+        display inline-block
+        font-size 0
+        height 26px
+        width 54px
+        flex 54px 0 0
+        background url(./image/6.png) 50% no-repeat
+        background-size contain
+        margin-right 15px
+    a
+        text-decoration none
+        color #42bd56
+            
+    .TalionNav-static
+        left 0
+        width 100%
+        background-color #f7f7f7
+        align-items center
+        margin-top 50px
+        padding 0 18px
+        height 60px
+        box-sizing border-box
+        display flex
+        justify-content space-between
+            .TalionNav-static:after
+                content ''
+                position absolute
+                top 0
+                left 0
+                border 1px solid #dfdfdf
+                border-left none 
+                border-right none 
+                box-sizing border-box
+                width 200%
+                height 200%
+                transform scale(0.5) translateX(-0.5px) translateY(-0.5px) 
+                transform-origin:  left top 
+                pointer-events: none 
+            a
+                font-size 0
+    .icon-wrap
+        margin-right 10px
+        .icon
+            width 39px
+            height 39px
+    .info
+        flex 1
+        h2
+            font-size 15px
+            line-height 21px
+            color #191919
+            margin 0px
+        p
+            font-size 11px
+            line-height 16px
+            color #818181
+            margin 0px
+    .btn.green
+        background-color #42bd56
+        color #ffffff
+    .btn
+        width 80px
+        height 30px
+        border-radius:  15px
+        text-align center
+        font-size 13px
+        line-height 30px
