@@ -5,18 +5,19 @@
 
 
 // 暂时性死区
-// var tmp = 123
+var tmp = 123
 
-// if(true){
-//     tmp = 'abc'
-// }
-
-
-var a ='a'
-var a = 'aa'
-console.log(a)
+if(true){
+    tmp = 'abc'
+    console.log(tmp)
+}
 
 
-let a ='a'
-let a = 'aa'
-console.log(a)
+// var a ='a'
+// var a = 'aa'
+// console.log(a)
+
+
+// let a ='a'
+// let a = 'aa'
+// console.log(a)

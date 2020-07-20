@@ -1,0 +1,16 @@
+<loading hidden="{{isHidden}}">数据加载中</loading>
+<view class="wrapper">
+    <view class="group" wx:for="{{articleList}}" wx:for-item="group">
+      <view class="group-bar">
+        <view class="group-title">{{group.date}}</view>
+      </view>
+      <view class="group-content">
+        <view class="group-content-item" 
+          wx:for="{{group.articles}}"
+          wx:for-item="articles">
+          <view class="group-content-item-desc">{{articles.title}}</view>
+          <image src="{{item.pic}}" />
+        </view>
+      </view>
+    </view>
+</view>

@@ -1,0 +1,59 @@
+<!-- 电单车小程序 -->
+<view class="container">
+  <!-- 地图 -->
+  <map id="map" longitude="115.832973" latitude="28.714789"  scale="14" markers="{{markers}}" show-location style="width: 100%; height: 100vh;">
+    <!-- 提示栏 -->
+    <cover-view class="hint">
+      <view class="hint-box">
+        <text class="text-item1">骑出运营区域 </text>
+        <text class="text-item2">助力自动关闭</text>
+        <image class="hint-bike" src="../../image/自行车.png"></image>
+        <image class="hint-right" src="../../image/向右.png"></image>
+      </view>
+    </cover-view>
+    <!-- 当前位置 -->
+    <cover-view class="location">
+      <view class="location-box">
+        <image class="search-pic" src="../../image/放大镜.png"></image>
+        <text class="location-search-text">搜索目的地停车点</text>
+        <!-- <image class="coordinates-pic" src="../../image/面-坐标.png"></image> -->
+      </view>
+      <cover-image class="coordinates-pic" src="../../image/面-坐标.png"></cover-image>
+    </cover-view>
+    <!-- 停车栏 -->
+    <cover-view class="park">
+      <view class="park-box">
+        <image class="charge-pic" src="../../image/lightning 闪电.png"></image>
+        <view class="hang">
+          <image class="park-pic" src="../../image/停车场.png"></image>
+        </view>
+      </view>
+    </cover-view>
+    <!-- 工具栏 -->
+    <cover-view class="tools">
+      <view class="tools-box">
+        <view class="tools-nav">
+          <image class="tools-bav-pic" src="../../image/地图-位置校准.png"></image>
+        </view>
+        <view class="tools-setting">
+          <image class="tools-setting-pic" src="../../image/扳手.png"></image>
+        </view>
+      </view>
+    </cover-view>
+    <!-- 安全提示 -->
+    <cover-view class="security-hint">
+      <view class="security-hint-box">
+        <image class="security-warnning" src="../../image/铃铛.png"></image>
+        <text class="hint-information">规范骑行，安全常在！</text>
+        <image class="security-hint-right" src="../../image/向右 (1).png"></image>
+      </view>
+    </cover-view>
+    <!-- 扫码用车栏 -->
+    <cover-view class="useBike">
+      <view class="useBike-box">
+        <image class="swiper" src="../../image/扫码.png"></image>
+        <text class="useBike-text">扫码用车</text>
+      </view>
+    </cover-view>
+  </map>
+</view>
