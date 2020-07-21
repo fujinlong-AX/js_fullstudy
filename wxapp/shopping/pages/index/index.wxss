@@ -1,0 +1,53 @@
+/* pages/index/index.wxss */
+swiper{
+    height: 421rpx;
+}
+.slide-image{
+    width: 100%;
+    height: 100%;
+}
+.select-title,.newest-title{
+    /* width: 100%; */
+    height: 60px;
+    line-height: 60px;
+    color: orange;
+    text-align: center;
+}
+.select-top,
+.select-bottom{
+    width: 100%;
+    height: 375rpx;
+}
+.select-top_small{
+    width: 375rpx;
+    height: 100%;
+    float: left;
+}
+.select-top_small navigator,
+.select-top_small image,
+.select-bottom navigator,
+.select-bottom image{
+    width: 100%;
+    height: 100%;
+    /* font-size: 0; */
+}
+.newest-box{
+    padding: 0 40rpx;
+}
+
+.newest-list{
+    display: inline-block;
+    width: 325rpx;
+    height: 325rpx;
+    margin: 0 20rpx 20rpx 0;
+    text-align: center;
+    background-color: #f5f6f5;
+}
+.newest-list:nth-child(2n) {
+    margin-right: 0;
+}
+.newest-list image{
+    width: 175rpx;
+    height: 175rpx;
+    margin: 20px 0 10px;
+}

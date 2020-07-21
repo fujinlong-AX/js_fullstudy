@@ -1,0 +1,50 @@
+/* pages/category/category.wxss */
+.container{
+    display: flex;
+
+}
+.menu-item{
+    padding: 25rpx;
+    font-weight: normal;
+    text-align: center;
+}
+.menu{
+    border-right: 1px solid #cdcdcd;
+}
+.page{
+    height: 100vh;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+    /* align-items: center; */
+}
+.header{
+    width: 80%;
+    height: 200rpx;
+    margin-top: 2vh;
+}
+.header image{
+    width: 100%;
+    height: 100%;
+}
+.header-text{
+    text-align: center;
+    padding: 25rpx 0;
+    color: brown;
+}
+.wrapper-food{
+    width: 33.3%;
+    height: 180rpx;
+    float: left;
+}
+.wrapper_food__pic image{
+    width: 100rpx;
+    height: 100rpx;
+}
+.wrapper_food__pic{
+    margin: 0 20rpx;
+}
+.wrapper_food__text{
+    margin: 0 20rpx;
+}

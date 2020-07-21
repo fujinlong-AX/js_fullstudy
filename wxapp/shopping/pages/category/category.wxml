@@ -1,0 +1,29 @@
+<!--pages/category/category.wxml-->
+<view class="container">
+    <view class="menu" style="width:20%;height:100vh">
+        <block wx:for = "{{category}}" wx:key = "{{index}}">
+            <view class="menu-item" bindtap = "changeMenu" id="{{item.id}}">
+                <text >{{item.name}}</text>
+            </view>
+        </block>   
+    </view>
+    <scroll-view scroll-y="{{true}}" style="width:80%;height:100vh" scroll-into-view="{{getId}}" scroll-with-animation="{{true}}">
+        <view class="page" wx:for = "{{detail}}" wx:key="index" id="{{item.id}}">
+            <view class="header" >
+                <image  src="{{item.banner}}" />
+                
+            </view>
+            <view class="header-text">
+                    <text >{{item.cate}}</text>
+            </view>
+            <view class="wrapper">
+                <view class="wrapper-food" wx:for = "{{item.detail}}" wx:key="{{index}}" wx:for-item = "det">
+                    <view class="wrapper_food__pic">
+                        <image src="{{det.thumb}}" />
+                    </view>
+                    <view ><text class="wrapper_food__text">{{det.name}}</text></view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
