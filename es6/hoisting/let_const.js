@@ -21,3 +21,40 @@ if(true){
 // let a ='a'
 // let a = 'aa'
 // console.log(a)
+
+
+
+
+
+
+
+
+
+
+
+
+//  -----------------------------------------------------------------
+
+
+// const num = 1234
+
+// num = 1000
+
+// console.log(num)
+
+
+
+// if(true){
+//     console.log(age)
+//     const age = 18
+// }
+
+
+const message = 'hello world'
+const message = 'hello'
+console.log(message)
+
+
+
+
+
