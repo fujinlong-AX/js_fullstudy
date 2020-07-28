@@ -1,10 +1,9 @@
-<!-- component/nav-bar/nav-bar.wxml -->
-<view>
-    <view></view>
-    <view class="container">
-        <view style="{{statusStyle}}"></view>
-        <view class="nav-bar" style="{{navBarStyle}}">
-            {{title}}
-        </view>
+<view class="">
+  <view style="height:{{topHeight}}px;"></view>
+  <view class="container">
+    <view style="{{statusBarStyle}}"></view>
+    <view class="nav-bar" style="{{navBarStyle}}">
+      {{title}}
     </view>
+  </view>
 </view>

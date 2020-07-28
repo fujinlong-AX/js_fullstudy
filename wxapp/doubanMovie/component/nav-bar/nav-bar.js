@@ -1,99 +1,58 @@
 // component/nav-bar/nav-bar.js
 Component({
-
   /**
-   * 页面的初始数据
+   * 组件的属性列表
    */
-
   properties: {
-    title:{
+    title: {
       type: String,
       value: ''
     },
-    statusBarColor:{
+    statusBarColor: {
       type: String,
       value: '#fff'
     },
     navBarColor: {
       type: String,
-      value: '#fff'
+      value: ''
     },
-    titleColor:{
+    titleColor: {
       type: String,
       value: '#000'
     }
   },
 
-
+  /**
+   * 组件的初始数据
+   */
   data: {
     statusBarStyle: "",
-    navBarStyle:""
+    navBarStyle: "",
+    topHeight: 0
   },
 
   lifetimes: {
     attached: function() {
-      let navBarStyle =`background-color:${this.data.navBarColor};
-      height:48px;color:${this.data.titleColor}`
+      let navBarStyle = `background-color:${this.data.navBarColor};
+      height:${wx.db.navBarHeight}px; color:${this.data.titleColor}`
+
+      let statusBarStyle = `background-color:${this.data.statusBarColor};
+      height:${wx.db.statusBarHeight}px; color:${this.data.titleColor}`
+
+      let topHeight = wx.db.navBarHeight + wx.db.statusBarHeight
 
       this.setData({
-        navBarStyle
+        navBarStyle,
+        statusBarStyle,
+        topHeight
       })
     }
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 组件的方法列表
    */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  methods: {
 
   }
 })
