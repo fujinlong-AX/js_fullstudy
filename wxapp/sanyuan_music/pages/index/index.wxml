@@ -1,0 +1,12 @@
+<!-- <scroll-view>
+  <swiper>
+    <swiper-item>
+      
+    </swiper-item>
+  </swiper>
+  <view>
+    <view wx:for="{{}}">
+
+    </view>
+  </view>
+</scroll-view> -->
