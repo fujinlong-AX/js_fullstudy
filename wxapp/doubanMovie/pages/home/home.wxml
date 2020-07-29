@@ -15,6 +15,6 @@
 
   <scroll-view class="scroll-view_movie" scroll-x="true">
     <!-- 一部电影 -->
-    <movieItem class="item"></movieItem>
+    <movieItem class="item" movie="{{movie}}"></movieItem>
   </scroll-view>
 </view>
