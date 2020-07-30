@@ -1,12 +1,35 @@
 // component/ratingStar/ratingStar.js
+const STAR_ON = "/assets/img/rating_star_small_on.png";
+const STAR_OFF = "/assets/img/rating_star_small_off.png";
+const STAR_HALF = "/assets/img/rating_star_small_half.png";
+
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
     score: {
-      type:Number,
-      value: 0
+      type: Number,
+      observer: function(newVal, oldVal, path) {
+        let stars = [STAR_OFF, STAR_OFF, STAR_OFF, STAR_OFF, STAR_OFF]
+        if (newVal > 0) {
+          newVal = newVal / 10
+          let floor = Math.floor(newVal)
+          if (floor != newVal) { // 说明有小数
+            stars[floor] = STAR_HALF
+          }
+          for (let i = 0; i < floor; i++) {
+            stars[i] = STAR_ON
+          }
+        }
+        this.setData({
+          stars: stars
+        })
+      }
+    },
+    iconSize: {
+      type: String,
+      value: '26rpx'
     }
   },
 
@@ -14,38 +37,13 @@ Component({
    * 组件的初始数据
    */
   data: {
-    arrayUrl: []
+    stars: [STAR_OFF, STAR_OFF, STAR_OFF, STAR_OFF, STAR_OFF]
   },
 
-
-  lifetimes:{
-      attached: function () {
-      let score = this.data.score
-      console.log(score)
-      let scoreInt = parseInt(score)
-      let arrayUrl = this.data.arrayUrl
-      for(let i = 0; i < scoreInt; i++){
-        arrayUrl.push('../../assets/img/rating_star_small_on.png')
-      } 
-      if(score === scoreInt){
-        for(let i = 0; i < (5-scoreInt);i++){
-          arrayUrl.push('../../assets/img/rating_star_small_off.png')
-        }
-      }else{
-        arrayUrl.push('../../assets/img/rating_star_small_half.png')
-        for(let i = 0; i < (4 - scoreInt);i++){
-          arrayUrl.push('../../assets/img/rating_star_small_off.png')
-        }
-      }
-      this.setData({
-        arrayUrl
-      })
-    }
-  },
   /**
    * 组件的方法列表
    */
   methods: {
-    
+
   }
 })

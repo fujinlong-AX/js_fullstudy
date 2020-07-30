@@ -1,10 +1,4 @@
 /* component/ratingStar/ratingStar.wxss */
-.rating-star{
-   height: 22rpx;
-   /* margin-top: -22rpx; */
-}
-.rating-star-pic{
-    width: 35rpx;
-    height: 35rpx;
-    border-radius: 10px;
+.star-wrapper{
+    display: flex;
 }

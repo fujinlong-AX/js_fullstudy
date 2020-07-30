@@ -26,6 +26,7 @@
 .score-wrapper{
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: -16rpx;
   /* align-items: center; */
 }
