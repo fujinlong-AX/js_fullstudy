@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .image-item{
+      display: block;
+      height: 300px;
+      margin-bottom: 50px;
+    }
+  </style>
+</head>
+<body>
+  <img class="image-item" src="" lazyload="true" data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604105723&di=c86441dec8282c9a77db802031a00edc&imgtype=0&src=http%3A%2F%2Fwww.madisonboom.com%2Fwp-content%2Fuploads%2F2019%2F04%2FGakki-GMO-Hello-New-World-1.jpg" alt="">
+  <img class="image-item" src="" lazyload="true" data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604151864&di=b2ed2519f05bcfc7a0b64f830052ba44&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180424%2F7b8ae3018fd641bc8a61b3ac76f536c4.jpeg" alt="">
+  <img class="image-item" src="" lazyload="true" data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604166860&di=a8a027725492f466f721c16d4eb79909&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201701%2F30%2F20170130230249_sNVKF.jpeg" alt="">
+  <img class="image-item" src="" lazyload="true" data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604185308&di=50d9b304628a31e1b71401a5ebe4b32e&imgtype=0&src=http%3A%2F%2Fa-ssl.duitang.com%2Fuploads%2Fitem%2F201403%2F15%2F20140315162041_xt4FY.jpeg" alt="">
+  <img class="image-item" src="" lazyload="true" data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604209076&di=b1883baa93f07667bd5fbb2cf3a322a7&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201810%2F12%2F20181012094830_jbmnv.jpg" alt="">
+  <img class="image-item" src="" lazyload="true" data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604220878&di=c1a0bc9b4b58cff5217e139295259317&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201712%2F11%2F20171211104703_f8CPX.jpeg" alt="">
+  <img class="image-item" src="" lazyload="true" data-original="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2325376082,3740992146&fm=26&gp=0.jpg" alt="">
+  <img class="image-item" src="" lazyload="true" data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604250929&di=f530686d5186738d93cf282b5c4b75da&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201808%2F12%2F20180812072410_ylgbt.thumb.400_0.jpeg" alt="">
+  <img class="image-item" src="" lazyload="true" data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604264897&di=90362afce41fcf0496ab50ac60613ae1&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201704%2F22%2F20170422180427_A2yFc.jpeg" alt="">
+  <img class="image-item" src="" lazyload="true" data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604288310&di=17ea37c7eaf592ba46ab0f66d4083135&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F25fe4035156aa4897ed75b3f8291f2a9f7b61da713186-l3S4L1_fw658" alt="">
+  <img class="image-item" src="" lazyload="true" data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604299704&di=44cd5f6de2f9be7b14758a516dbb7446&imgtype=0&src=http%3A%2F%2Fimg0.pclady.com.cn%2Fpclady%2F1511%2F23%2F1396345_111.jpg" alt="">
+
+
+  <script>
+    // 可视区域的高度
+    let viewHeight = document.documentElement.clientHeight
+
+    function lazyLoad() {
+      let eles = document.querySelectorAll('img[data-original][lazyload]')
+      // console.log(eles);
+      // 判断每一个img是否出现在来可视区域内
+      // eles.forEach((item, index) => { // Array.from(eles) 把eles变成数组
+      //   console.log(item);
+      // })
+      Array.prototype.forEach.call(eles, function(item, index) {
+        // console.log(item)
+        let rect
+        rect = item.getBoundingClientRect() // 用于获取页面上某个元素的左上右下分别相对于浏览器视窗的位置
+        console.log(rect)
+        if (rect.bottom >= 0 && rect.top < viewHeight) {  // 在可视区域内
+          !function () {
+            let img = new Image()
+            img.src = item.dataset.original     // ???
+            img.onload = function () {
+              item.src = img.src
+            }
+            item.removeAttribute('data-original')   // 移除属性，下次不再遍历
+            item.removeAttribute('lazyload')
+          }()
+        }     
+      })
+    }
+    lazyLoad()
+    document.addEventListener('scroll', lazyLoad)
+  </script>
+</body>
+</html>
