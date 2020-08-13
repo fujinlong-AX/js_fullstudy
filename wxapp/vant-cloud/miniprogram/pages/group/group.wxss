@@ -1,0 +1,29 @@
+/* miniprogram/pages/group/group.wxss */
+.container{
+  width: 100vw;
+  height: 100vh;
+  background-color: #eeeeee;
+  display: flex;
+  justify-content: center;
+}
+.group-box{
+  width: 90vw;
+  border-radius: 30rpx;
+  background-color: #ffffff;
+  margin-top: 50rpx;
+  /* display: flex;
+  align-items: center; */
+}
+.friends-o{
+  /* width: 100rpx; */
+  /* height: 100rpx; */
+  margin: 0 30rpx 0 30rpx;
+}
+text{
+  font-weight: 550;
+  /* font-size: 42rpx; */
+}
+image{
+  width: 50rpx;
+  height: 50rpx;
+}
