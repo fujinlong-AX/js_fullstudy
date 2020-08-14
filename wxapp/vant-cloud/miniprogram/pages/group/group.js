@@ -26,7 +26,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const self = this
+    wx.cloud.callFunction({
+      name: 'getGroups',
+      data: {},
+      success: function(res) {
+        console.log(res);
+      },
+      fail: function(err) {
+        console.log(err);
+      }
+    })
   },
 
   /**

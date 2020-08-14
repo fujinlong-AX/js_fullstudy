@@ -1,0 +1,8 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "search": "../../components/search/index",
+    "trend-item": "../../components/trend-item/trend-item"
+  },
+  "navigationBarTitleText": "Trendings"
+}
