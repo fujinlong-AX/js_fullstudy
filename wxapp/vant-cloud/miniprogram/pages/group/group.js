@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    groupList: []
   },
 
   /**
@@ -28,13 +28,16 @@ Page({
   onShow: function () {
     const self = this
     wx.cloud.callFunction({
-      name: 'getGroups',
+      name: 'getGroup',
       data: {},
-      success: function(res) {
-        console.log(res);
+      success(res) {
+        console.log(res)
+        self.setData({
+          groupList: res.result
+        })
       },
-      fail: function(err) {
-        console.log(err);
+      fail(err) {
+        console.log(err)
       }
     })
   },

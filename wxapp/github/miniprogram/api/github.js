@@ -1,0 +1,1 @@
+const trendings = () => new Promise((resolve, reject))

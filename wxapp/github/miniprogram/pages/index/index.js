@@ -9,15 +9,17 @@ Page({
     takeSession: false,
     requestResult: ''
   },
-
-  onLoad: function() {
-    if (!wx.cloud) {
-      wx.redirectTo({
-        url: '../chooseLib/chooseLib',
-      })
-      return
-    }
-
+  onSearch: (value) => {
+    console.log(value, '++++++++++++');
+  },
+  onLoad: function () {
+    wx.startPullDownRefresh({})
+    
+  },
+  onPullDownRefresh: function () {
+    this.reloadData()
+  },
+    
     // 获取用户信息
     wx.getSetting({
       success: res => {

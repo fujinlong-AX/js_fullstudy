@@ -14,7 +14,8 @@ Component({
   // search ？ 父子关系
   methods: {
     onChange: function onChange(event) {
-      // this.$emit()
+      
+      this.triggerEvent('search',event.detail)
     }
   }
 })
