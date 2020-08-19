@@ -11,5 +11,5 @@
 // 深拷贝  (不会受元数据影响的赋值操作叫做深拷贝)
 let a = { age:1 }
 let b = Object.assign({},a)
-// a.age = 2
+a.age = 2
 console.log(b);
