@@ -11,7 +11,7 @@ const handle = async (ctx, next) => {
     ctx.response.status = err.statusCode | err.status | 500
     ctx.response.type = 'html'
     ctx.response.body = '<p>something error， you should concat adminster</p>'
-    ctx.app.emit('error', err, ctx)
+    ctx.app.emit('error', err)
   }
 }
 

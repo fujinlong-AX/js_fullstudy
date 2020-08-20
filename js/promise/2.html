@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="http://neteasecloudmusicapi.zhaoboy.com/top/list?idx=1"></script>
+</head>
+<body>
+  <script>
+    function getSong() {
+      $.jax({
+        url: 'http://neteasecloudmusicapi.zhaoboy.com/top/list?idx=1',
+        dataType: 'JSON',
+        success: function(res) {
+          console.log(res.playlist.track[0].name);
+          callback()
+        }
+      })
+    }
+    getSong(singSong)
+
+    function singSong() {
+      console.log('sing......');
+    }
+  </script>
+</body>
+</html>
