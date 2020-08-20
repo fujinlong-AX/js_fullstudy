@@ -1,0 +1,22 @@
+{
+  "name": "js_fullstudy",
+  "version": "1.0.0",
+  "description": "js全栈学习",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "build:w": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fujinlong-AX/js_fullstudy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fujinlong-AX/js_fullstudy/issues"
+  },
+  "homepage": "https://github.com/fujinlong-AX/js_fullstudy#readme"
+}
