@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.common.dev.js"></script>
   <title>Document</title>
+  <style>
+    .red{
+      color: red;
+    }
+    [v-cloak]{
+      display: none;
+    }
+  </style>
 </head>
 <body>
   <div id="app">
@@ -20,11 +28,26 @@
       <span>{{message}}</span>
       <span v-text="message"></span>
     </div> -->
-    <div class="count">
+    <!-- <div class="count">
       <p>{{count}}</p>
       <button v-on:click="add">+</button>
       <button v-on:click="reduce">-</button>
-    </div>
+    </div> -->
+    <!-- <div class="model">
+      <p>{{message}}</p>
+      <p>
+        v-model:<input type="text" v-model="message"/>
+      </p>
+    </div> -->
+    <!-- <div class="pic">
+      v-on绑定事件(缩写add)，v-bind绑定属性(缩写:)
+      <img v-bind:src="imgSrc" alt=""> 
+    </div> -->
+    <!-- <div @click="changeCOlor":class="isRed?'red':'green'" v-bind:class="[className1. className2]">老蒋很腼腆</div>   ??? -->
+    <!-- <div v-pre>{{message}}</div> -->
+    <!-- <div v-cloak>{{message}}</div> -->   ???
+    <div v-once>{{message}}</div>
+    <input type="text" v-model="message"/>
   </div>
 
 
@@ -32,6 +55,8 @@
     var app = new Vue({
       el: '#app', // 一般写框架最外的哪个容器
       data: {
+        className1:'active',
+        className2:'wrapper',
         message: 'Hello world',
         isSure: true,
         list: ['a', 'b', 'c', 'd'],
@@ -40,7 +65,9 @@
           {name: '老蒋', age: 18},
           {name: '皮皮', age: 18}
         ],
-        count: 0
+        count: 0,
+        imgSrc: '',
+        isRed: true
       },
 
       methods: {
@@ -51,6 +78,10 @@
         reduce() {
           console.log('reduce');
           this.count --
+        },
+        changeCOlor() {
+          // console.log("232");
+          this.isRed = !this.isRed
         }
       },
 
