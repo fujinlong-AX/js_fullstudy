@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.common.dev.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <input type="text" v-model="inputValue" />
+    <button v-on:click="handleBtnAdd">添加</button>
+    <button v-on:click="handleBtnDelete">删除</button>
+  <ul>
+    <todo-item v-for="item in list"
+                v-bind:content="item">
+    </todo-item>
+  </ul>
+  </div>
+  <script>
+    const TodoItem = {
+      props: ['content'],
+      template: "<li>{{content}}</li>"
+    }
+    const app = new Vue({
+      el: '#root',
+      components: {
+        TodoItem:TodoItem
+      },
+      data: {
+        list: [],
+        inputValue: ''
+      },
+      methods: {
+        handleBtnAdd() {
+          this.list.push(this.inputValue)
+          this.inputValue = ''
+        },
+        handleBtnDelete() {
+          this.list.pop()
+        }
+      }
+    })
+  </script>
+</body>
+</html>

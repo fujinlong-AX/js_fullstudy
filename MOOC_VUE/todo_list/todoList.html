@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.common.dev.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" placeholder="其输入你喜欢吃的水果" v-model="inputValue">
+    <button v-on:click="handleBtnAdd">添加</button>
+    <ul>
+      <li v-for="item in list">{{item}}</li>
+    </ul>
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        list: [],
+        inputValue: ''
+      },
+      methods: {
+        handleBtnAdd() {
+          this.list.push(this.inputValue)
+          this.inputValue = ''
+        }
+      }
+    })
+  </script>
+</body>
+</html>

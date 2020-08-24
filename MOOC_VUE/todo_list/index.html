@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.common.dev.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <input type="text" v-model="inputValue"/>
+    <button v-on:click="handleBtnClick">提交</button>
+    <ul>
+      <todo-item v-bind:content="item" 
+                 v-for="item in list">
+      </todo-item>
+    </ul>
+  </div>
+  <script>
+    // Vue.component是定义在全局下的
+    // Vue.component("TodoItem", {   // 定义TodoItem组件时，把它拿到html里使用时，可以小写，但是驼峰出要加-，如:todo-item
+    //   props: ['content'],
+    //   template: "<li>{{content}}</li>"
+    // })
+    const TodoItem = {  
+      props: ['content'],  // props是外部传递的数据
+      template: "<li>{{content}}</li>"
+    }
+
+    const app = new Vue({
+      el: '#root',
+      components: {
+        TodoItem:TodoItem
+      },
+      data: {
+        list: [],
+        inputValue:''
+      },
+      methods: {
+        handleBtnClick: function () {
+          this.list.push(this.inputValue)
+          this.inputValue = ''
+        }
+      }
+    })
+  </script>
+</body>
+</html>

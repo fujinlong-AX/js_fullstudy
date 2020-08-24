@@ -1,2 +1,2 @@
-mvvm model view view-model
+mvvm: model view view-model
 
