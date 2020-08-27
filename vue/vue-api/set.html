@@ -8,23 +8,29 @@
 </head>
 <body>
   <div id="app">
-    <div id="demo" v-yuan="color">
-      {{num}}
-    </div>
+    <p>{{count}}</p>
+    <button @click="add">+</button>
   </div>
+
+
   <script>
-    Vue.directive('yuan', function (el, bindng, vnode) {
-      el.style = `color: ${bindng.value}`
-    })
+    var outData = {
+      count: 1,
+      name: 'wn'
+    }
+
+    function adds() {
+      // outData.count++
+      Vue.set(outData, 'count', 3)
+    }
 
     let app = new Vue({
       el: '#app',
-      data: {
-        num: 0,
-        color:green
-      },
+      data: outData,
       methods: {
-
+        add() {
+          adds()
+        }
       }
     })
   </script>

@@ -7,21 +7,19 @@
   <title>Document</title>
 </head>
 <body>
+  <h1>components</h1>
   <div id="app">
-    <div id="demo" v-yuan="color">{{num}}</div>
+    <wn></wn>
   </div>
-  <script>
-    Vue.directive('yuan', function (el, bindng, vnode) {
-      el.style = `color: ${bindng.value}`
-    })
 
+
+  <script>
+    Vue.component('wn', {
+      template: `<div style="font-size: 20px">我是一个组件</div>`
+    })
     let app = new Vue({
       el: '#app',
       data: {
-        num: 0,
-        color:'green'
-      },
-      methods: {
 
       }
     })
