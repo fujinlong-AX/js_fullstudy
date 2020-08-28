@@ -7,13 +7,12 @@
 
 <script>
 // @ is an alias to /src
-import User from '@/components/User.vue'
-
+import User from '@/components/User'
 export default {
   name: 'Home',
   data() {
-    return{
-      name: '老蒋',
+    return {
+      name: '聪哥',
       title: ''
     }
   },
@@ -21,9 +20,9 @@ export default {
     User
   },
   methods: {
-    updateTitle(e) {
-      console.log(e);
-      this.title = e
+    updateTitle(title) {
+      console.log(title)
+      this.title = title
     }
   }
 }
