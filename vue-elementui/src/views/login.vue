@@ -30,17 +30,12 @@ export default {
     login() {
       if(!this.user || !this.password) {
          this.$message.error('账号和密码不能为空');
-         return
-      }
-      if(this.user === 'admin' || this.password === '123456') {
+      } else {
          this.$message({
            message: '登录成功',
            type: 'success'
          })
-         // 路由跳转
          this.$router.push({ path: '/home'})
-    } else {
-         this.$message.error('账号或密码错误');
     }
   }
 }
