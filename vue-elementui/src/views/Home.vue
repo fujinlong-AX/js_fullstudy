@@ -6,7 +6,7 @@
         <div class="user-control">
           <el-dropdown @command="handleCommand">
             <span class="el-dropdown-link">
-              admin
+              {{$route.params.user}}
               <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
@@ -54,6 +54,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      name: '',
+    };
+  },
   methods: {
     handleCommand(command) {
       console.log(command);
