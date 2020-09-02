@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="inputVal">
+    <button @click="handleBtnAdd">添加</button>
+    <ul>
+      <num v-for="(item, index) in list" 
+            :key="index"
+            :content="item"
+            @add="handleAdd(index)"></num>
+    </ul>
+  </div>
+  <script>
+
+    let num = {
+      props: ['content', 'index'],
+      template: '<li @click="handleCountAdd">{{content}}</li>',
+      methods: {
+        handleCountAdd() {
+          this.$emit("add")
+        }
+      }
+    }
+
+    let app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          list: [],
+          inputVal: ''
+        }
+      },
+      methods: {
+        handleBtnAdd() {
+          this.list.push(this.inputVal)
+          this.inputVal = ''
+        },
+        handleAdd(index) {
+          console.log(index)
+          this.list[index] = Number(this.list[index]) + 1
+          this.inputVal = +this.inputVal + 1
+          this.inputVal = ''
+          
+        },
+      },
+      components: {
+        num: num
+      }
+    })
+  </script>
+</body>
+</html>

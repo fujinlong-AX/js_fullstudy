@@ -13,14 +13,20 @@
     <button v-on:click="handleBtnDelete">删除</button>
   <ul>
     <todo-item v-for="item in list"
-                v-bind:content="item">
+                v-bind:content="item"
+                @delete="handleItemDelete">
     </todo-item>
   </ul>
   </div>
   <script>
     const TodoItem = {
       props: ['content'],
-      template: "<li>{{content}}</li>"
+      template: "<li @click='handleItemClick'>{{content}}</li>",
+      methods: {
+        handleItemClick() {
+          this.$emit("delete")
+        }
+      }
     }
     const app = new Vue({
       el: '#root',
