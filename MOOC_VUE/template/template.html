@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.common.dev.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div v-html="title"></div>
+    <ul>
+      <li v-text="item" v-for="(item, index) in list" :key="index"></li>
+    </ul>
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data () {
+        return {
+          title: '<h1>金龙喜欢的水果</h1>',
+          list: ['芒果','西瓜']
+        }
+      }
+    })
+  </script>
+</body>
+</html>

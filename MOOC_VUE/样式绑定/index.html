@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.common.dev.js"></script>
+  <title>Document</title>
+  <style>
+    .activated{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- [activated]是一个数组，里面包含多个值。这是一个动态的属性，所有前面要加v-bind -->
+    <div @click="handleDivClick"
+          :class="[activated]">Hello World</div>
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          activated: ""
+        }
+      },
+      methods: {
+        handleDivClick: function () {
+          // if (this.activated === "activated") {
+          //   this.activated = ""
+          // }else {
+          //   this.activated = "activated"
+          // }
+          this.activated = this.activated === "activated" ? "" : "activated"
+        }
+      }
+    })
+  </script>
+</body>
+</html>

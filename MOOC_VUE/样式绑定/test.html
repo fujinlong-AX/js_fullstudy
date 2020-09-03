@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.common.dev.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <button @click="handleChange" :style="styleObj">变帅</button>
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          styleObj: {
+            background: 'purple',
+            fontSize: '20px',
+            color: 'white',
+            border: '0px'
+          }
+        }
+      },
+      methods: {
+        handleChange() {
+        //   this.styleObj = this.styleObj === {background: 'purple',fontSize: '20px',color: 'white',border: '0px'} ?  {
+        //     background: 'pink',
+        //     fontSize: '30px',
+        //     color: 'black',
+        //     border: '2px solid yellow'
+        //   } : {
+        //     background: 'purple',
+        //     fontSize: '20px',
+        //     color: 'white',
+        //     border: '0px'
+        // }
+        if (this.styleObj === {
+            background: 'purple',
+            fontSize: '20px',
+            color: 'white',
+            border: '0px'
+          }) {
+            this.styleObj = {
+              background: 'purple',
+              fontSize: '20px',
+              color: 'white',
+              border: '0px'
+          }
+        }else {
+          this.styleObj = {
+              background: 'pink',
+              fontSize: '30px',
+              color: 'black',
+              border: '2px solid yellow'
+          }
+        }
+      }
+    }
+    })
+  </script>
+</body>
+</html>

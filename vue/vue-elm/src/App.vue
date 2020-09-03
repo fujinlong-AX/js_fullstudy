@@ -2,7 +2,18 @@
   <div id="app">
     <!-- header 组件 -->
     <v-header :seller="seller"></v-header>
-    <router-view/>
+    <div class="tab">
+      <div class="tab-wrapper">
+        <router-link to="/">商品</router-link>
+      </div>
+      <div class="tab-wrapper">
+        <router-link to="/comment">评论</router-link>
+      </div>
+      <div class="tab-wrapper">
+        <router-link to="/seller">商家</router-link>
+      </div>
+    </div>
+    <router-view :data="seller"/>
   </div>
 </template>
 
@@ -40,5 +51,20 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-
+@import './common/stylus/variable'
+  .tab
+    width 100%
+    display flex
+    height 36px
+    line-height 36px
+    &-wrapper 
+      flex 1
+      text-align center
+      color $color-font
+      a
+        display block
+        width 100%
+      .router-link-exact-active
+        color $color-red
+        border-bottom 2px solid $color-red
 </style>

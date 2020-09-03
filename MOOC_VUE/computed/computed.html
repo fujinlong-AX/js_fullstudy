@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.common.dev.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    {{fullName}}
+    {{age}}
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          firstName: 'thima',
+          lastName: 'sdlsndks',
+          fullName: 'ndskndaksndks',
+          age: 22
+        }
+      },
+      // watch 与computed类似，但是写起来太垃圾了
+      watch: {
+        firstName: function () {
+          this.fullName = this.firstName + " " + this.lastName
+        },
+        lasttName: function () {
+          this.fullName = this.firstName + " " + this.lastName
+        },
+      }
+      // methods里的函数每次调用都会重新执行，computed里的函数每次调用都会用之前缓存的结果，这样可以提高性能，并且在html调用时，computed不用写()
+      // computed: {
+      //   fullName() {
+      //     return this.firstName + " " + this.lastName
+      //   }
+      // }
+    })
+  </script>
+</body>
+</html>

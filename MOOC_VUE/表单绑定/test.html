@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.common.dev.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model.number="firstValue">
+    <select v-model="">
+      <option value ="add" autofocus="autofocus">+</option>
+      <option value ="reduce">-</option>
+      <option value="multiply">*</option>
+      <option value="divided">/</option>
+    </select>
+    <input type="text" v-model.number="lastValue" >
+    <button @click="sum">=</button>
+    <input type="text" v-model.number="sumValue">
+  </div>
+  <script>
+      let app = new Vue({
+        el: '#app',
+      data() {
+        return {
+          firstValue: '',
+          lastValue: '',
+          sumValue: ''
+        }
+      },
+      methods: {
+        // handleClick() {
+
+        // }
+      },
+      computed: {
+        sum() {
+          switch (option.value) {
+            case 'add':
+              this.sumValue = this.firstValue + this.lastValue
+              break;
+              case 'reduce':
+              this.sumValue = this.firstValue - this.lastValue
+              break;
+              case 'multiply':
+              this.sumValue = this.firstValue * this.lastValue
+              break;
+              case 'divided':
+              this.sumValue = this.firstValue / this.lastValue
+              break;
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

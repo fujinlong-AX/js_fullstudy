@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.common.dev.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    {{fullName}}
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          firstName: "Dell",
+          lastName: "Lee"
+        }
+      },
+      // 改变set里的值，才会引起computed的重新计算get
+      computed: {
+        fullName: {
+          get: function () {
+            return this.firstName + " " + this.lastName
+          },
+          set: function (value) {
+            let arr = value.split(" ")
+            this.firstName = arr[0]
+            this.lastName = arr[1]
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

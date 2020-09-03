@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.common.dev.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div @click.self="handleClick">
+      nice
+      <div>hello world</div>
+    </div>
+  </div>
+  <script>
+    // self要求， click事件只有在e.target = e.currentTarget的时候才会执行
+    // prevent 会拦截默认事件
+    // stop 会阻止事件冒泡
+    // once 事件执行一次后，自动解绑
+    // capture 捕获，从外到内都要绑定capture
+    let app = new Vue({
+      el: '#app',
+      data () {
+        return {
+
+        }
+      },
+      methods: {
+
+      }
+    })
+  </script>
+</body>
+</html>
