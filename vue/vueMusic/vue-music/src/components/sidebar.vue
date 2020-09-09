@@ -44,7 +44,7 @@ export default {
       this.$store.dispatch('setShowSidebar', false)
     },
     showToast() {
-      this.$toast('该功能暂未开放')
+      this.$toast('该功能暂未开放', 'center')
     }
   },
   computed: {
