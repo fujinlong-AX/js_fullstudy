@@ -7,7 +7,7 @@
     <div class="shortcut-wrapper" ref="shortcutWrapper">
       <v-scroll>
         <div>
-          123
+          456
         </div>
       </v-scroll>
     </div>
