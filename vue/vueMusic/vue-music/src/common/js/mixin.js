@@ -1,7 +1,7 @@
 export const searchMixin = {
   data () {
     return {
-
+      query: ''
     }
   },
   computed: {
@@ -9,7 +9,7 @@ export const searchMixin = {
   },
   methods: {
     onQueryChange(e) {
-      console.log(e);
+      // console.log(e);
       this.query = e.trim()
     }
   }

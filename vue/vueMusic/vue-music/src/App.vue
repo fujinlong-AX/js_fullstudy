@@ -30,14 +30,14 @@ export default {
 
 
 <style lang="stylus">
-  @font-face {
+ @font-face {
     font-family: 'iconfont';  /* project id 2052938 */
-    src: url('//at.alicdn.com/t/font_2052938_prbvnzbsgb9.eot');
-    src: url('//at.alicdn.com/t/font_2052938_prbvnzbsgb9.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_2052938_prbvnzbsgb9.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_2052938_prbvnzbsgb9.woff') format('woff'),
-    url('//at.alicdn.com/t/font_2052938_prbvnzbsgb9.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_2052938_prbvnzbsgb9.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_2052938_98a07c8swmc.eot');
+    src: url('//at.alicdn.com/t/font_2052938_98a07c8swmc.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_2052938_98a07c8swmc.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_2052938_98a07c8swmc.woff') format('woff'),
+    url('//at.alicdn.com/t/font_2052938_98a07c8swmc.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_2052938_98a07c8swmc.svg#iconfont') format('svg');
 }
   .iconfont
     font-family:"iconfont" !important;
