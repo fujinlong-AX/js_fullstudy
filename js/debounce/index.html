@@ -22,10 +22,10 @@
       }, delay)
       }
     }
-    const odebounce = debounce(success, 1000) // 2
+    const odebounce = debounce(success, 2000) // 2
 
     let btn = document.getElementById('btn')
-    btn.addEventListener('click', success)
+    btn.addEventListener('click', odebounce)
   </script>
 </body>
 </html>

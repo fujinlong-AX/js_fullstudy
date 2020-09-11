@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">节流</button>
+  <script>
+    function success(e) {
+      console.log('tijiao');
+    }
+    // 函数节流
+    const throttle = (fn, delay) => {
+      let flag = true
+      return () => {
+        if (!flag) return
+        flag = false
+        setTimeout(() => {
+          fn()
+          flag = true
+        }, delay)
+      }
+    }
+
+    const oThtottle = throttle(success, 2000)
+
+    let btn = document.getElementById('btn')
+    btn.addEventListener('click', oThtottle)
+  </script>
+</body>
+
+</html>
