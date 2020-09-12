@@ -1,9 +1,16 @@
 <template>
-  <v-scroll class="suggest" ref="suggest" :data="result" :pullup="pullup" :beforeScroll="beforeScroll" @scrollToEnd="searchMore">
+  <v-scroll 
+    ref="suggest" 
+    class="suggest" 
+    :data="result"
+    :pullup="pullup"
+    :beforeScroll="beforeScroll"
+    @scrollToEnd="searchMore"
+  >
     <ul class="suggest-list">
-      <li class="suggest-item" @click="selectItem()" v-for="(item, index) in result" :key="index">
+      <li class="suggest-item" @click="selectItem(item)" v-for="(item, index) in result" :key="index">
         <div class="icon">
-          <i class="iconfont icon-music">&#xe6b2;</i>
+          <i class="iconfont">&#xe6b2;</i>
         </div>
         <div class="name">
           <p class="text" v-html="getDisplayName(item)"></p>
@@ -70,22 +77,20 @@ export default {
       this.fetchResult(this.page)
     },
     _checkMore(data) {
-        if (data.songs.length < 12 || ((this.page - 1) * limit) >= data.songCount) {
-          this.hasMore = false
-        }
-      },
-      selectItem(item) {
-        this.$emit('select', item)
+      if (data.songs.length < 12 || ((this.page - 1) * limit) >= data.songCount) {
+        this.hasMore = false
       }
+    },
+    selectItem(item) {
+      this.$emit('select', item)
+    }
   },
-  
   watch: {
     query(newQuery) {
       if (!newQuery) {
         return
       }
       this.search()
-      // console.log(newQuery);
     }
   }
 }

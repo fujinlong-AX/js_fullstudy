@@ -5,12 +5,12 @@
         <span class="text">{{item}}</span>
         <span class="icon-box" @click.stop="deleteOne(index)">
           <i class="iconfont">&#xe61c;</i>
-        </span>
+        </span> 
       </li>
     </transition-group>
   </div>
 </template>
-
+ 
 <script>
 export default {
   props: {
