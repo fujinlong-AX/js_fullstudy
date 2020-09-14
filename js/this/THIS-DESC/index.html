@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <Script>
+    function demo() {
+      var user = '金龙'
+      console.log(this);// this指向的是调用它的对象
+      console.log(this.user);
+    }
+    demo()
+  </Script>
+</body>
+</html>
