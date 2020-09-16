@@ -12,7 +12,7 @@
         <input type="password" id="userpwd" v-model="userpwd" />
       </div>
       <p class="forgot-pwd">忘记密码</p>
-      <div class="sign">登录</div>
+      <div class="sign" @click="login">登录</div>
     </div>
     <p class="register" @click="register">新用户？点击这里注册</p>
   </div>
@@ -23,45 +23,59 @@
 export default {
   data() {
     return {
-      avatar: require('../assets/img/raw_1512446140.jpeg'),
-      username: '',
-      userpwd: ''
-    }
+      avatar: require("../assets/img/raw_1512446140.jpeg"),
+      username: "",
+      userpwd: "",
+    };
   },
   methods: {
     register() {
-      this.$router.push({path: '/StarRegister'})
+      this.$router.push({ path: "/StarRegister" });
     },
     login() {
+      // console.log(111);
       if (this.username.trim() == "" || this.username.trim() == null) {
-        this.$toast("其输入用户名");
+        this.$toast("请输入账号");
         return;
       }
       if (this.userpwd.trim() == "" || this.userpwd.trim() == null) {
-        this.$toast("其输入密码");
+        this.$toast("请输入密码");
         return;
       }
       this.$http({
-        method: 'post',
-        url: this.$util.baseUrl+'/users/userLogin',
+        method: "post",
+        url: this.$util.baseUrl + "/users/userLogin",
         data: {
           username: this.username.trim(),
-          userpwd: this.userpwd.trim()
-        }
-      }).then((res) => {
-        if (res.data.code ==="80000") {
-          // 拿到后端返回的用户信息（用户名和昵称）存到本地
-          // 挑战首页
-        }  else {
-          this.$toast(res.data.mess)
-        }
-      }).catch((res) => {
-        console.log(err);
+          userpwd: this.userpwd.trim(),
+        },
       })
-    }
-  }
-}
+        .then((res) => {
+          // console.log(typeof res.config.data, res.config.data.username, '++++++++++++s')
+          // let information = JSON.parse(res.config.data)
+          // console.log(password.username)
+          if (res.data.code === "80000") {
+            // 拿到后端返回的用户信息 (用户名和昵称) 存到本地
+            // let username = information.username
+            // let userpwd = information.userpwd
+            // localStorage.username = username
+            // localStorage.userpwd = userpwd
+            console.log(res);
+            sessionStorage.setItem("userInfo", JSON.stringify(res.data.r));
+            // 跳转首页
+            this.$router.push("/NoteClass");
+          } else {
+            this.$toast(res.data.msg);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+};
 </script>
+
 
 <style lang="less" scoped>
 input {

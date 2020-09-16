@@ -22,9 +22,9 @@ const routes = [
     }
   },
   {
-    path: '/starLogin',
-    name: 'starLogin',
-    component: () => import ('@/views/starLogin.vue'),
+    path: '/StarLogin',
+    name: 'StarLogin',
+    component: () => import ('@/views/StarLogin.vue'),
     meta: {
       title: '登录'
     }
@@ -35,6 +35,38 @@ const routes = [
     component: () => import ('@/views/StarRegister.vue'),
     meta: {
       title: '注册'
+    }
+  },
+  {
+    path: '/NoteClass',
+    name: 'NoteClass',
+    component: () => import ('@/views/NoteClass.vue'),
+    meta: {
+      title: '笔记分类'
+    }
+  },
+  {
+    path: '/NoteList',
+    name: 'NoteList',
+    component: () => import ('@/views/NoteList.vue'),
+    meta: {
+      title: '笔记详情'
+    }
+  },
+  {
+    path: '/NoteDetail',
+    name: 'NoteDetail',
+    component: () => import ('@/views/NoteDetail.vue'),
+    meta: {
+      title: '详情内容'
+    }
+  },
+  {
+    path: '/addNote',
+    name: 'addNote',
+    component: () => import ('@/views/AddNote.vue'),
+    meta: {
+      title: '写便签'
     }
   }
 ]
