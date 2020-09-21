@@ -62,6 +62,7 @@ class SqQueue {
     if (this.size === this.getLength() / 4 && this.getLength() /) {
       this.resize(this.getLength() / 2)
     }
+    return r
   }
   isEmpty() {
     return this.first === this.last
