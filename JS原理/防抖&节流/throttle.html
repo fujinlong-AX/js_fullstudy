@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">节流</div>
+  <script>
+    function throttle(fn, delay) {
+      // 利用闭包保存时间
+      let pre = Date.now() // Date.now()时间戳
+      return function () {
+        let now = Date.now()
+        if (pre - now >= delay) {
+          fn.call(this, arguments)
+          prev = Date.now()
+        }
+      }
+    }
+    document.getElementById('app').addEventListener('click', throttle(fn, 2000))
+    function fn() {
+      console.log('节流');
+    }
+  </script>
+</body>
+</html>
