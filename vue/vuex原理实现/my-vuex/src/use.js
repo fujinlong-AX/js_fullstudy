@@ -1,6 +1,6 @@
 class Vue {
   constructor () {
-    _installedPlugins: []
+    this._installedPlugins = []
   }
   toArray() {
 
