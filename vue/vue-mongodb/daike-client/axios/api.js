@@ -1,6 +1,7 @@
 import axios from 'axios'
 import config from './config.js'
 import qs from 'qs' // 序列化请求数据, 服务端要求
+import router from 'vue-router'
 
 import { Toast } from 'vant'
 
@@ -8,8 +9,7 @@ export default function $axios(options) {
   return new Promise((resolve, reject) => {
     const instance = axios.create({
       baseURL: config.baseURL,
-      headers: {},
-      transformResponse: [function(data) {}]
+      transformResponse: [function() {}]
     })
 
     instance.interceptors.request.use(
@@ -48,9 +48,9 @@ export default function $axios(options) {
         }
 
         data = JSON.parse(data)
+        const message = data.msg || 'Error';
         switch (data.code) {
           case 0:
-            const message = data.msg || 'Error';
             Toast.fail({
               message,
               duration: 1000
@@ -125,3 +125,4 @@ export default function $axios(options) {
       })
   })
 }
+
