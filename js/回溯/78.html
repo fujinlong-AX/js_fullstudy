@@ -1,0 +1,29 @@
+<script>
+  // result = []
+  // function backtrack(路径, 选择列表):
+  //   if 满足结束条件:
+  //       result.add(路径)
+  //       return
+    
+  //   for 选择 of 选择列表:
+  //       做选择
+  //       backtrack(路径, 选择列表)
+  //       撤销选择
+  var subsets = function (nums) {
+    let result = []
+    function backtrack(start, tmpPath) {
+      // [1, 2, 3]
+      // 本质: n 叉树的遍历
+      result.push(tmpPath.slice(0))
+      for (let i = start; i < nums.length; i++) {
+        let num = nums[i]
+        tmpPath.push(num)
+        backtrack(i + 1, tmpPath)
+        tmpPath.pop()
+      }
+    }
+    backtrack(0, [])
+    return result
+  }
+  console.log(subsets([1,2,3]));
+</script>
