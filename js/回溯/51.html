@@ -23,7 +23,7 @@
           colIndex === col;  // 同列
         })
         // 如果在 tmpPath（已经选过的皇后的位置里面）找到 满足上面这个公式的
-        // 说明 这列不能选
+        // 说明   这列不能选
         if (flag) continue;
         tmpPath.push(col);
         backtrack(tmpPath);
