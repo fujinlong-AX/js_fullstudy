@@ -1,0 +1,21 @@
+
+  <script>
+    function jsonp({url, data, timeout}) {
+      return new Promise((resolve, reject) => {
+
+        // 为了保证每个方法名唯一
+        let methodName = `jsonpCallback${Date.now()}`
+        setTimeout(reject('超时错误'), 5000)
+        window[methodName] = function(data) {
+          resolve(data)
+        }
+        const scriptNode = document.createElement('script')
+        scriptNode.src = url + '?callback=' + methodName
+        document.body.appendChild(scriptNode)
+      })
+    }
+    jsonp({url: 'http://127.0.0.1:8088/api'}).then(res => {
+      console.log('结果', res);
+    })
+  </script>
+<div class=""></div>
