@@ -3,7 +3,10 @@
     if (root === null) {
       return 0;
     }
+    // 递
     maxDepth(root.left)
     maxDepth(root.right)
+    // 归
+    return Math.max(lh, rh) + 1
 };
 </script>
