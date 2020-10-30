@@ -6,4 +6,7 @@
 4. 
 
 
-组件: fragment teleport suspense
+组件: 
+fragment 不再需要一个无用的根结点
+teleport 
+suspense
