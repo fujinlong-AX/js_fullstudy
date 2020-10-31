@@ -31,14 +31,14 @@
       } catch (error) {
         v = '';
       }
-      // 数组  
+      // 数组
       // list[]
       if (k.slice(-2) === '[]') {
         k = k.slice(0, -2);  // list
         obj[k] ? obj[k].push(v) : obj[k] = [v];
         continue;
       }
-      // 非数组
+      // 非数组的情况
       obj[k] = v;
     }
     console.log(obj);
