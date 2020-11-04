@@ -3,9 +3,10 @@
     <van-nav-bar
       :title="title"
       :left-text="leftText"
-      :left-arrow = "leftAarrow"
+      :left-arrow="leftArrow"
       @click-left="goBack"
     />
+
     <van-search
       v-model="keyword"
       placeholder="请输入搜索关键词"
@@ -17,16 +18,16 @@
 </template>
 
 <script>
+import { NavBar, Search } from 'vant'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { NavBar, Search  } from 'vant';
 export default {
   props: {
     title: {
       type: String,
       default: '首页'
     },
-    leftAarrow: {
+    leftArrow: {
       type: Boolean,
       default: true
     }
@@ -38,7 +39,7 @@ export default {
   setup(props) {
     const router = useRouter()
     const leftText = ref('')
-    leftText.value = props.leftAarrow ? '返回' : ''
+    leftText.value = props.leftArrow ? '返回' : ''
 
     function goBack() {
       router.go(-1)
@@ -59,9 +60,8 @@ export default {
 
 <style lang="less" scoped>
 .van-nav-bar{
-  color: #fff;
   &::after{
-    border-bottom: none;
+    border-bottom-width: 0px;
   }
 }
 </style>

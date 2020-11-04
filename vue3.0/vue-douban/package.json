@@ -8,8 +8,9 @@
   },
   "dependencies": {
     "amfe-flexible": "^2.2.1",
+    "axios": "^0.21.0",
     "core-js": "^3.6.5",
-    "vant": "^3.0.0-beta.5",
+    "vant": "^3.0.0-beta.6",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
@@ -24,10 +25,5 @@
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "postcss-pxtorem": "^5.1.1"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+  }
 }

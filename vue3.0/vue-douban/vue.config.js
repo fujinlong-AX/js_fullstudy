@@ -1,4 +1,26 @@
+const path = require('path')
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
+
 module.exports = {
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://t.yushu.im',
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
+  },
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@': resolve('src')
+      }
+    }
+  },
   css: {
     loaderOptions: {
       less: {
