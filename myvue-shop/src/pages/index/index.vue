@@ -24,6 +24,7 @@ export default {
       // 通过我们的wx.getSetting 先查询一下用户是否授权"scoped.record"
       let _this = this
       wx.getSetting({
+        // withSubscriptions: false,
         success: (res)=>{
           // 如果没有同意授权，打开设置
           // console.log(res);
