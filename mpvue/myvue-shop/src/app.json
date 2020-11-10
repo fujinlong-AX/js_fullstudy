@@ -1,12 +1,17 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/mappage/main",
     "pages/topic/main",
     "pages/category/main",
     "pages/cart/main",
-    "pages/my/main"
+    "pages/my/main",
+    "pages/mappage/main"
   ],
+  "permission": {
+    "scope.userLocation": {
+    "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "window": {
     "backgroundColor":"#fafafa",
     "backgroundTextStyle": "light",

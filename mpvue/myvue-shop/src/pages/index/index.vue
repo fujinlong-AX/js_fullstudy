@@ -8,18 +8,33 @@
         <span class="icon"></span>
       </div>
     </div>
+    <div class="swiper">
+      <swiper class="swiper-container" indicator-dots="true" autoplay="true" interval="3000" circular="true" duration="500">
+        <block v-for="(item, index) in banner" :key="index">
+          <swiper-item class="swiper-item">
+            <image class="slide-image" :src="item.image_url" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapState,mapMutations } from 'vuex'
 import amapFile from '../../utils/amap-wx.js'
+import { get,post } from '../../utils/index'
 export default {
   data () {
     return {
-      cityName: '南昌'
+      banner: []
     }
   },
+  computed: {
+    ...mapState(['cityName'])
+  },
   methods: {
+    ...mapMutations(['update']),
     toMappage() {
       // 通过我们的wx.getSetting 先查询一下用户是否授权"scoped.record"
       let _this = this
@@ -42,14 +57,14 @@ export default {
           }
         },
         fail: (err)=>{
-          console.log(err);
+          console.log(err,'11111');
         },
         complete: ()=>{}
       });
     },
     getCityName() {
       let _this = this 
-      var myAmapFun = new amapFile.AMapWX({key:'23a534071fbf66c244b9f477d0dc89ae'})
+      var myAmapFun = new amapFile.AMapWX({key:'ebb08a05686a32485ea94125321d4849'})
       // 搞得地图中获取位置的方法
       myAmapFun.getRegeo({
         success: function(data) {
@@ -59,9 +74,14 @@ export default {
         fail: function(info) {
           // 失败的回调
           console.log(info);
-          _this.cityName = '北京'
+          // _this.cityName = '北京'
+          _this.update({ cityName: '北京' })
         }
       })
+    },
+    async getData() {
+      const data = await get('/index/index') // http://localhost:5757/lm/index/index
+      console.log(data);
     }
   }
 }
