@@ -17,6 +17,26 @@
         </block>
       </swiper>
     </div>
+    <div class="channel">
+      <div v-for="(item, index) in channel" :key="index" @click="categoryList(item.id)">
+        <img :src="item.icon_url" alt="">
+        <p>{{item.name}}</p>
+      </div>
+    </div>
+    <div class="brand">
+      <div class="head">
+        品牌制造商直供
+      </div>
+      <div class="content">
+        <div v-for="(item, index) in brandList" :key="index" @click="branddetail(item.id)">
+          <div>
+            <p>{{item.name}}</p>
+            <p class="price">{{item.floor_price}}元起</p>
+          </div>
+          <img :src="item.new_pic_url" alt="">
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -27,11 +47,17 @@ import { get,post } from '../../utils/index'
 export default {
   data () {
     return {
-      banner: []
+      banner: [],
+      channel: [],
+      brandList: []
     }
   },
   computed: {
     ...mapState(['cityName'])
+  },
+  mounted () {
+    this.getData(),
+    this.getCityName()
   },
   methods: {
     ...mapMutations(['update']),
@@ -42,8 +68,8 @@ export default {
         // withSubscriptions: false,
         success: (res)=>{
           // 如果没有同意授权，打开设置
-          // console.log(res);
-          if (!res.authSetting['scope.userLoacation']) {
+          console.log(res);
+          if (!res.authSetting['scope.userLocation']) {
             wx.openSetting({
               success: (res)=>{
                 // 获取授权位置信息
@@ -57,7 +83,7 @@ export default {
           }
         },
         fail: (err)=>{
-          console.log(err,'11111');
+          console.log(err);
         },
         complete: ()=>{}
       });
@@ -82,6 +108,19 @@ export default {
     async getData() {
       const data = await get('/index/index') // http://localhost:5757/lm/index/index
       console.log(data);
+      this.banner = data.banner
+      this.channel = data.channel
+      this.brandList = data.brandList
+    },
+    categoryList(id) {
+      wx.navigateTo({
+        url: '/pages/categoryList/main?id=' + id
+      })
+    },
+    brandList(id) {
+      wx.navigateTo({
+        url: '/page/branddetail/main/id=' + id
+      })
     }
   }
 }
