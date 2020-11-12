@@ -5,7 +5,11 @@
     "pages/category/main",
     "pages/cart/main",
     "pages/my/main",
-    "pages/mappage/main"
+    "pages/mappage/main",
+    "pages/brandlist/main",
+    "pages/newgoods/main",
+    "pages/topicdetail/main",
+    "pages/search/main"
   ],
   "permission": {
     "scope.userLocation": {
