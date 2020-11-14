@@ -1,0 +1,10 @@
+<script>
+  function curry(fn) {
+    let arr = []
+    return function(...args) {
+      if (arr.length !== fn.length) {
+        arr.push(...args)
+      }
+    }
+  }
+</script>
