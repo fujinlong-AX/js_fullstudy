@@ -10,19 +10,23 @@
       <div @click="cancel">取消</div>
     </div>
     <div class="searchtips" v-if="words">
-      <div>
-        牙刷
-      </div>
-      <div class="nogoods">数据库暂无此类商品</div>
+      <div v-if="tipsData.length !== 0">
+        <div v-for="(item, index) in tipsData" :key="index">
+          {{item.name}}
+        </div>
+      </div>     
+      <div class="nogoods" v-else>数据库暂无此类商品...</div>
     </div>
 
-    <div class="history">
+    <div class="history" v-if="historyData.length!==0">
       <div class="t">
         <div>历史记录</div>
         <div @click="clearHistory"></div>
       </div>
       <div class="cont">
-        <div>日式</div>
+        <div v-for="(item, index) in historyData" :key="index" @click="searchWords" :data-value="item.keyword">
+          {{item.keyword}}
+        </div>
       </div>
     </div>
 
@@ -31,10 +35,9 @@
         <div>热门搜索</div>
       </div>
       <div class="cont">
-        <div class="active">日式</div>
-        <div>123</div>
-        <div>456</div>
-        <div>789</div>
+        <div v-for="(item, index) in hotData" :key="index" :class="{active: item.is_hot === 1}" @click="searchWords" :data-value="item.keyword">
+          {{item.keyword}}
+        </div>
       </div>
     </div>
   </div>
@@ -48,8 +51,14 @@ export default {
       words: '',
       openId: '',
       hotData: [],
-      historyData: []
+      historyData: [],
+      tipsdata: []
     }
+  },
+  mounted() {
+    this.openId = wx.getStorageSync('openId') || ''
+
+    this.getHotData()
   },
   methods: {
     clearInput() {
@@ -58,31 +67,39 @@ export default {
     cancel() {
 
     },
-    clearHistory() {
-
+    async clearHistory() {
+      const data = await post('/search/clearhistoryAction', {
+        openId: this.openId
+      })
+      if (data) {
+        this.historyData = []
+      }
     },
     inputFoucs() {
 
     },
-    tipsearch() {
-
+    async tipsearch() {
+      const data = await get('/search/helperaction', {
+        keyword: this.words
+      })
+      this.tipsdata = data.keywords
     },
     async searchWords(e) {
       let value = e.currentTarget.dataset.value
       this.words = value || this.words
       const data = await post('/search/addhistoryaction', {
-        openId: this.words,
+        openId: this.openId,
         keyword: value || this.words
       })
-      console.log(data);
+      // console.log(data);
       // 获取历史数据
       this.getHotData() 
     },
     async getHotData (first) {
       const data = await get('/search/indexaction?openId=' + this.openId)
       this.historyData = data.historyData
-      this.hotData = data.hotData
-      console.log(data);
+      this.hotData = data.hotKeywordList
+      // console.log(data);
     }
   }
 }
