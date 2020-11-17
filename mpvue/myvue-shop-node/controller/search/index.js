@@ -30,9 +30,9 @@ async function helperAction(ctx) {
   } else {
     orderBy = 'retail_price'
   }
-  const keywords = await mysql('nideshop_goods').orderBy(orderBy, order)
+  const keywords = await mysql('nideshop_goods').orderBy(orderBy, order) // orderBy
   .column('id', 'name', 'list_pic_url', 'retail_price')
-  .where('name', 'like', '%', + keyword + '%').limit(10).select()
+  .where('name', 'like', '%' + keyword + '%').limit(10).select()
   if (keywords) {
     ctx.body = {
       keywords

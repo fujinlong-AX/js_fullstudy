@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function throttle(fn) {
+      let timeout = null
+      return function () {
+        if (!timeout) {
+          timeout = setTimeout(() => {
+            fn()
+            timeout = null
+          }, 2000)
+        }
+      }
+    }
+
+    function req() {
+      console.log('发请求');
+    }
+  </script>
+  <script>
+    function throttle1(fn) {
+      let pre = 0
+      return function () {
+        let now = Date.now()
+        if (now - pre >= 2000) {
+          fn()
+          pre = now
+        }
+      }
+    }
+  </script>
+  <script>
+    function debounce(fn) {
+      let timeout = null
+      return function () {
+        if (timeout) clearTimeout(timeout)
+        timeout = setTimeout(() => {
+          fn()
+        }, 2000)
+      }
+    }
+
+    function req() {
+      console.log('发请求');
+    }
+  </script>
+</body>
+
+</html>
