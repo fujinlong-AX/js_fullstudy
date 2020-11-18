@@ -24,4 +24,4 @@ node_modules/
 hs_err_pid*
 
 
-/koa-mysql/
+koa-mysql
