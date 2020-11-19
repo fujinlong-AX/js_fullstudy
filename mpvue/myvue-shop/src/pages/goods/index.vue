@@ -31,6 +31,65 @@
     </div>
 
     <!-- 商品参数 -->
+    <div class="attribute">
+      <div class="head">
+        商品参数
+      </div>
+      <div class="item" v-for="(item, index) in attribute" :key="index">
+        <div>{{item.name}}</div>
+        <div>{{item.value}}</div>
+      </div>
+    </div>
+
+    <!-- 图片展示 -->
+    <div class="detail" v-if="goods_desc">
+      <wxParse :content="goods_desc" />
+    </div>
+
+    <!-- 常见问题 -->
+    <div class="common-problem">
+      <div class="h">
+        <text class="title">常见问题</text>
+      </div>
+      <div class="b">
+        <div class="item" v-for="(item, index) in issueList" :key="index">
+          <div class="question-box">
+            <text class="spot"></text>
+            <text class="question">{{item.question}}</text>
+          </div>
+          <div class="answer">{{item.answer}}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 大家都在看 -->
+    <div class="common-problem">
+      <div class="h">
+        <text class="title">大家都在看</text>
+      </div>
+      <div class="sublist">
+        <div v-for="(subitem, index) in productList" :key="index">
+          <img :src="subitem.list_pic_url" alt="">
+          <p>{{subitem.name}}</p>
+          <p>￥{{subitem.retail_price}}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="bottom-fixed">
+      <div class="collect-box" @click="collect">
+        <div class="collect"></div>
+      </div>
+        <div class="car-box">
+          <div class="car">
+            <span>3</span>
+            <img src="/static/images/ic_menu_shoping_nor.png" alt="">
+          </div>
+        </div>
+      <div>立即购买</div>
+      <div>加入购物车</div>
+    </div>
 
     <!-- 选择规格的弹出层 -->
     <div class="pop" v-show="showpop" @click="showType"></div>
@@ -61,6 +120,8 @@
 
 <script>
 import { get, post } from '../../utils';
+import wxParse from 'mpvue-wxparse'
+import { log } from 'util';
 export default {
   data () {
     return {
@@ -70,8 +131,17 @@ export default {
       info: {},
       brand: {},
       showpop: false,
-      number: 0
+      number: 0,
+      attribute:[],
+      goods_desc: '',
+      issueList: [],  //常见问题
+      productList: [],
+      collectFlag: false,
+      goodsId: ''
     }
+  },
+  components: {
+    wxParse
   },
   // 商品分享
   onshareAppMessage() {
@@ -84,17 +154,23 @@ export default {
   },
   mounted () {
     this.openId = wx.getStorageSync('openId') || ''
+    this.id = this.$root.$mp.query.id
     this.goodsDetail()
   },
   methods: {
     async goodsDetail () {
       const data = await get('/goods/detailaction', {
-        id: 1009024,
+        id: this.id,
         openId: this.openId
       })
-      console.log(data);
+      console.log(data, '========');
       this.info = data.info
       this.gallery = data.gallery
+      this.attribute = data.attribute
+      this.goods_desc = data.info.goods_desc
+      this.issueList = data.issue
+      this.productList = data.productList
+      this.goodsId = data.info.id
     },
     showType() {
       this.showpop = !this.showpop
@@ -108,11 +184,20 @@ export default {
       } else {
         return false
       }
+    },
+    async collect() {
+      this.collectFlag = !this.collectFlag 
+      const data = await post('/collect/addcollect', {
+        openId: this.openId,
+        goodsId: this.goodsId,
+      })
+      console.log(data);
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
+@import url('~mpvue-wxparse/src/wxParse.css');
 @import "./style";
 </style>
