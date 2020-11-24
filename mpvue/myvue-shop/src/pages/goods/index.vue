@@ -79,16 +79,16 @@
     <!-- footer -->
     <div class="bottom-fixed">
       <div class="collect-box" @click="collect">
-        <div class="collect"></div>
+        <div class="collect" :class="[collectFlag ? 'active' : '']"></div>
       </div>
-        <div class="car-box">
+        <div class="car-box" @click="toCart">
           <div class="car">
-            <span>3</span>
+            <span>{{allnumber}}</span>
             <img src="/static/images/ic_menu_shoping_nor.png" alt="">
           </div>
         </div>
-      <div>立即购买</div>
-      <div>加入购物车</div>
+      <div @click="buy">立即购买</div>
+      <div @click="addCart">加入购物车</div>
     </div>
 
     <!-- 选择规格的弹出层 -->
@@ -110,7 +110,7 @@
           <p>数量</p>
           <div class="count">
             <div class="cut" @click="reduce">-</div>
-            <input type="text" class="number" v-model="number">
+            <input type="text" class="number" v-model="number" disabled="false">
             <div class="add" @click="add">+</div>
           </div>
       </div>
@@ -137,7 +137,9 @@ export default {
       issueList: [],  //常见问题
       productList: [],
       collectFlag: false,
-      goodsId: ''
+      goodsId: '',
+      allNumber: 0,
+      allPrice: ''
     }
   },
   components: {
@@ -171,6 +173,9 @@ export default {
       this.issueList = data.issue
       this.productList = data.productList
       this.goodsId = data.info.id
+      this.collectFlag = data.collected
+      this.allnumber = data.allnumber
+      this.allPrice = data.info.retail_price
     },
     showType() {
       this.showpop = !this.showpop
@@ -192,6 +197,61 @@ export default {
         goodsId: this.goodsId,
       })
       console.log(data);
+    },
+    toCart() {
+      wx.switchTab({
+         url: '/pages/cart/main'
+      });
+    },
+    async buy() {
+      if (this.showpop) {
+        if (this.number === 0) {
+          wx.showToast({
+            title: '请选择商品数量',
+            duration: 2000,
+            icon: 'none',
+            mask: true,
+            success: res => {}
+          })
+          return false
+        }
+        const data = await post('/order/submitAction', {
+          godsId: this.goodsId,
+          openId: this.openId,
+          allPrice: this.allPrice
+        })
+        if (data) {
+          wx.navigateTo({
+             url: '/pages/order/main'
+          });
+        }
+      } else {
+        this.showpop = true
+      }
+    },
+    addCart() {
+      if (this.showpop) {
+        this.allnumber = this.allnumber + this.number
+        if (this.number === 0) {
+          wx.showToast({
+            title: '请选择商品数量',
+            duration: 2000,
+            icon: 'none',
+            mask: true,
+            success: res => {
+              
+            }
+          })
+          return false
+        }
+        const data = await post('cart/addCart', {
+          openId: this.openId,
+          goodsId: this.goodsId,
+          
+        })
+      } else {
+        this.showpop = true
+      }
     }
   }
 }

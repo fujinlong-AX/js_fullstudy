@@ -15,8 +15,17 @@ async function addCollect(ctx) {
       'user_id': openId,
       'value_id': goodsId
     })
+    ctx.body = {
+      data: 'collected'
+    }
   } else {
-    
+    await mysql('nideshop_collect').where({
+      'user_id': openId,
+      'value_id': goodsId
+    }).del()
+    ctx.body = {
+      data: 'uncollect'
+    }
   }
 }
 module.exports = {
