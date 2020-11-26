@@ -229,7 +229,7 @@ export default {
         this.showpop = true
       }
     },
-    addCart() {
+    async addCart() {
       if (this.showpop) {
         this.allnumber = this.allnumber + this.number
         if (this.number === 0) {
