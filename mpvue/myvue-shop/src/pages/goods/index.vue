@@ -247,7 +247,7 @@ export default {
         const data = await post('cart/addCart', {
           openId: this.openId,
           goodsId: this.goodsId,
-          
+          number: this.number
         })
       } else {
         this.showpop = true
