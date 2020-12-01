@@ -1,10 +1,8 @@
-const {mysql} = require('../../mysql');
-const goods = require('../goods');
+const { mysql } = require('../../mysql')
 
 // 添加收藏
 async function addCollect(ctx) {
   const { openId, goodsId } = ctx.request.body
-  // console.log(openId, goodsId);
   // 判断是否已经收藏
   const iscollect = await mysql('nideshop_collect').where({
     'user_id': openId,
@@ -28,6 +26,7 @@ async function addCollect(ctx) {
     }
   }
 }
+
 module.exports = {
   addCollect
 }

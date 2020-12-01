@@ -121,7 +121,7 @@
 <script>
 import { get, post } from '../../utils';
 import wxParse from 'mpvue-wxparse'
-import { log } from 'util';
+
 export default {
   data () {
     return {
@@ -138,7 +138,7 @@ export default {
       productList: [],
       collectFlag: false,
       goodsId: '',
-      allNumber: 0,
+      allnumber: 0,
       allPrice: ''
     }
   },
@@ -146,7 +146,7 @@ export default {
     wxParse
   },
   // 商品分享
-  onshareAppMessage() {
+  onShareAppMessage() {
     console.log(this.info.name);
     return {
       title: this.info.name,
@@ -194,7 +194,7 @@ export default {
       this.collectFlag = !this.collectFlag 
       const data = await post('/collect/addcollect', {
         openId: this.openId,
-        goodsId: this.goodsId,
+        goodsId: this.goodsId
       })
       console.log(data);
     },
@@ -216,7 +216,7 @@ export default {
           return false
         }
         const data = await post('/order/submitAction', {
-          godsId: this.goodsId,
+          goodsId: this.goodsId,
           openId: this.openId,
           allPrice: this.allPrice
         })
@@ -231,8 +231,7 @@ export default {
     },
     async addCart() {
       if (this.showpop) {
-        this.allnumber = this.allnumber + this.number
-        if (this.number === 0) {
+        if (this.number == 0) {
           wx.showToast({
             title: '请选择商品数量',
             duration: 2000,
@@ -249,6 +248,14 @@ export default {
           goodsId: this.goodsId,
           number: this.number
         })
+        if (data) {
+          this.allnumber = this.allnumber + this.number
+          wx.showToast({
+            title: '添加购物车成功',
+            icon: 'success',
+            duration: 1500
+          })
+        }
       } else {
         this.showpop = true
       }
@@ -259,5 +266,5 @@ export default {
 
 <style lang="less" scoped>
 @import url('~mpvue-wxparse/src/wxParse.css');
-@import "./style";
+@import "./style.less";
 </style>
