@@ -1,6 +1,6 @@
-# cookie     localStorage  sessionStorage  indexedDB
-  可设置
-  过期时间    需手动清除     关闭页面消失     需手动清除
+# cookie     localStorage  sessionStorage  indexedDB      session
+
+  过期时间    需手动清除     关闭页面消失     需手动清除       服务端(表)
 
     4k          5M              5M             无限
 
@@ -13,7 +13,7 @@
 
   cookie: 
     value: 保存用户登录态，值应该加密
-    http-only: 不能通过js访问cookie，防止xss攻击
+    http-only: 不能通过js访问cookie，防止攻击
     secure: 只在传输协议为https的请求中携带
     same-site: 规定浏览器不能在跨域请求中携带cookie，减少CSRF攻击
 

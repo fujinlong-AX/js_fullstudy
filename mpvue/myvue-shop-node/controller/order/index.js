@@ -44,6 +44,28 @@ async function submitAction (ctx) {
   }
 }
 
+async function detailAction (ctx) {
+  const openId = ctx.query.openId
+  const addressId = ctx.query.addressId || ''
+  const orderDetail = await mysql('nideshop_order').where({
+    'user_id': openId
+  }).select()
+  
+  var goodsIds = orderDetail[0].goods_id.split(',')
+  console.log(goodsIds);
+
+  const list = await mysql('nideshop_cart').andWhere({
+    'user_id': openId
+  }).whereIn('goods_id', goodsIds).select()
+
+  // 收货地址
+  var addressList;
+  if (addressId) {
+    addressList = await mysq('')
+  }
+}
+
 module.exports = {
-  submitAction
+  submitAction,
+  detailAction
 }
