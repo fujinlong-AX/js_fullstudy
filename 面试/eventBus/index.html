@@ -1,0 +1,19 @@
+<script>
+  class Event {
+    constructor() {
+      this.listener = {
+
+      }
+    }
+    sub(key, sub) {
+      if (!this.listener[key]) this.listener[key] = []
+      this.listener[key].push(cb)
+    }
+    push(key) {
+      let cbs = this.listener[key] || []
+      for (let cb of cbs) {
+        cb()
+      }
+    }
+  }
+</script>
