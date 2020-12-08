@@ -5,12 +5,12 @@
         <div class="list">
           <div class="addresslist">
             <div>
-              <span>张三</span>
+              <span>{{address.name}}</span>
               <div class="moren">默认</div>
             </div>
             <div class="info">
-              <p>mobile</p>
-              <p>address</p>
+              <p>{{address.mobile}}</p>
+              <p>{{address.address + address.address_detail}}</p>
             </div>
             <div></div>
           </div>
@@ -22,7 +22,7 @@
     <div class="orderbox">
       <div class="item">
         <div>商品合计</div>
-        <div>￥100</div>
+        <div>￥{{allprice}}</div>
       </div>
       <div class="item">
         <div>运费</div>
@@ -34,28 +34,28 @@
       </div>
     </div>
 
-    <div class="cartlist">
+    <div class="cartlist" v-for="(item, index) in listData" :key="index">
       <div class="item">
         <div class="con">
           <div class="left">
             <div class="img">
-              <img src="" alt="">
+              <img :src="item.list_pic_url" alt="">
             </div>
             <div class="info">
-              <p>name</p>
-              <p>price</p>
+              <p>{{item.goods_name}}</p>
+              <p>￥{{item.retail_price}}</p>
             </div>
           </div>
           <div class="right">
-            <div class="num">x14</div>
+            <div class="num">x{{item.number}}</div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="bottom">
-      <div>实付: ￥ 599</div>
-      <div>支付</div>
+      <div>实付: ￥ {{allprice}}</div>
+      <div @click="pay">支付</div>
     </div>
   </div>
 </template>
@@ -66,9 +66,11 @@ export default {
   data () {
     return {
       address: {},
+      price: '',
       allprice: '',
       openId: '',
-      addressId: ''
+      addressId: '',
+      listData: []
     }
   },
   onShow() {
@@ -93,6 +95,24 @@ export default {
       const data = await get('/order/detailAction', {
         openId: this.openId,
         addressId: this.addressId
+      })
+      console.log(data);
+      if (data) {
+        // this.allprice = data.price
+        this.listData = data.goodsList
+        this.address = data.address
+      }
+      this.listData.map((item) => {
+        this.allprice += item.retail_price * item.number
+      })
+    },
+    pay () {
+      wx.showToast({
+        title: '支付功能暂未开发',
+        icon: 'none',
+        duration: 1500,
+        mask: false,
+        success: (res) => {}
       })
     }
   }

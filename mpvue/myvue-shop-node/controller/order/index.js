@@ -52,7 +52,6 @@ async function detailAction (ctx) {
   }).select()
   
   var goodsIds = orderDetail[0].goods_id.split(',')
-  console.log(goodsIds);
 
   const list = await mysql('nideshop_cart').andWhere({
     'user_id': openId
@@ -61,7 +60,20 @@ async function detailAction (ctx) {
   // 收货地址
   var addressList;
   if (addressId) {
-    addressList = await mysq('')
+    addressList = await mysql('nideshop_address').where({
+      'user_id': openId,
+      'id': addressId
+    }).orderBy('is_default', 'desc').select()
+  } else {
+    addressList = await mysql('nideshop_address').where({
+      'user_id': openId
+    }).orderBy('is_default', 'desc').select()
+  }
+  // console.log(orderDetail);
+  ctx.body = {
+    price: orderDetail[0].allprice,
+    goodsList: list,
+    address: addressList[0] || {}
   }
 }
 
