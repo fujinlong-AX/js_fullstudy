@@ -73,6 +73,12 @@ export default {
       })
       console.log(data);
       _this.listData = data.data
+    },
+    selAddress (id) {
+      wx.setStorageSync('addressId', id)
+      wx.navigateBack({
+        delta: 1
+      });
     }
   }
 }

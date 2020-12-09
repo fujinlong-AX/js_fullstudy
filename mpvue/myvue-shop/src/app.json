@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/addaddress/main",
     "pages/addressSelect/main",
     "pages/order/main",
     "pages/index/main",
@@ -12,8 +13,8 @@
     "pages/mappage/main",
     "pages/brandlist/main",
     "pages/newgoods/main",
-    "pages/topicdetail/main",
-    "pages/addaddress/main"    ],
+    "pages/topicdetail/main"
+  ],
   "permission": {
     "scope.userLocation": {
     "desc": "你的位置信息将用于小程序位置接口的效果展示"
