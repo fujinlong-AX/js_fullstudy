@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button class="btn">
+    防抖
+  </button>
+</body>
+<script>
+  // 防抖函数
+  // var debounce = function (fn, delay) {
+  //   let timer = null
+  //   return function () {
+  //     if (timer) {
+  //       clearTimeout(timer)
+  //     }
+  //     timer = setTimeout(() => {
+  //       fn()
+  //     }, delay)
+  //   }
+  // }
+  
+
+  var debounce = function (fn, delay) {
+    let preTime = 0
+    let curTime = new Date().getTime()
+    if (curTime - preTime < delay) {
+      
+    }
+    fn()
+    preTime = curTime
+  }
+
+  // 节流函数
+  // var trottle = function () {
+  //   let timer = null
+  //   return function (fn, delay) {
+  //     if(!timer) {
+  //       setTimeout(() => {
+  //         fn()
+  //         timer = null
+  //       }, delay)
+  //     }
+  //   }
+  // }
+
+
+  // var trottle = function (fn, delay) {
+  //   let pre = 0
+  //   let cur = new Date().getTime()
+  //   return function () {
+  //     if (cur - pre >= delay) {
+  //       fn()
+  //       pre = cur
+  //     }
+  //   }
+  // }
+</script>
+
+</html>
